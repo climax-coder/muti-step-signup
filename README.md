@@ -1,54 +1,76 @@
-# React + TypeScript + Vite
+# 🌍 Multi-Country Sign-Up Flow (React + Zustand + Zod)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A dynamic, multi-step sign-up form built with React, Zustand for state management, and Zod for schema-based validation. The form dynamically changes fields per country and includes validation, image upload, local storage persistence, and navigation across steps.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+✅ Multi-step form  
+✅ Dynamic fields based on country  
+✅ Real-time validation (Zod + react-hook-form)  
+✅ Local storage persistence (Zustand + middleware)  
+✅ Image upload (with size/dimension limit)  
+✅ Step navigation with progress control  
+✅ Reusable form components  
+✅ Country-specific schemas and validation  
+✅ Clean Git history for each implementation step
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🛠 Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- React + TypeScript
+- Zustand (with `persist`)
+- React Hook Form
+- Zod (for schema validation)
+- Tailwind CSS (optional styling)
+- Vite
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## 🗂️ Project Structure
+
+src/
+├── assets/ # Static assets (images, fonts, etc.)
+├── components/
+│ ├── common/ # Reusable form components
+│ │ ├── ArrowButton.tsx
+│ │ ├── FormError.tsx
+│ │ ├── FormField.tsx
+│ │ ├── FormLayout.tsx
+│ │ └── ImageUploader.tsx
+│ └── signup/ # Step-wise form logic
+│ ├── CountrySelector.tsx
+│ ├── DynamicFormStep.tsx
+│ ├── ReviewSubmit.tsx
+│ ├── StepIndicator.tsx
+│ └── UploadImage.tsx
+├── config/
+│ └── countryFormConfig.ts # Country-specific form field and validation config
+├── pages/
+│ └── SignUp.tsx # Page wrapper for the sign-up flow
+├── store/
+│ └── signupFormStore.ts # Zustand global state store
+├── utils/
+│ └── getStepSchema.ts # Schema builder from config
+├── App.tsx
+├── index.css
+├── main.tsx
+└── vite-env.d.ts
+
+## 📦 Installation
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/your-username/multi-country-signup.git
+cd multi-country-signup
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
+npm run dev
+# or
+npm start
 ```
