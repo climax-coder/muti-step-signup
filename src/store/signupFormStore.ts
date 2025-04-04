@@ -14,30 +14,30 @@ interface FormState {
 
 export const useSignupFormStore = create<FormState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       country: "",
       step: 1,
       data: {},
 
-      setCountry: (newCountry) =>
-        set((state) => {
-          const isNew = state.country !== newCountry;
+      setCountry: (newCountry) => {
+        const prevCountry = get().country;
+        const isNew = newCountry !== prevCountry;
 
-          return {
+        if (isNew) {
+          set({
             country: newCountry,
-            step: isNew ? 2 : state.step,
-            data: isNew ? { country: newCountry } : { ...state.data },
-          };
-        }),
+            step: 1,
+            data: { country: newCountry },
+          });
+        }
+      },
 
       nextStep: () => set((state) => ({ step: state.step + 1 })),
       prevStep: () => set((state) => ({ step: state.step - 1 })),
-
       updateData: (newData) =>
         set((state) => ({
           data: { ...state.data, ...newData },
         })),
-
       reset: () => set({ country: "", step: 1, data: {} }),
     }),
     {

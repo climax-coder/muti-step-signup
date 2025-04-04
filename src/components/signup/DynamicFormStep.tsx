@@ -10,11 +10,13 @@ import { FormField } from "../common/FormField";
 export const DynamicFormStep = () => {
   const { country, step, updateData, nextStep, prevStep, data } =
     useSignupFormStore();
-  const fieldDefs = contryFormSchemas[country][step - 2];
+
+  const fieldDefs = contryFormSchemas[country]?.[step - 2];
+
   const schema = getZodSchema(fieldDefs);
 
   const defaultValues = useMemo(() => {
-    return fieldDefs.reduce((acc, field) => {
+    return fieldDefs?.reduce((acc, field) => {
       acc[field.name] = data?.[field.name] ?? "";
       return acc;
     }, {} as Record<string, any>);
@@ -33,7 +35,7 @@ export const DynamicFormStep = () => {
 
   useEffect(() => {
     reset(defaultValues);
-  }, [reset, defaultValues]);
+  }, [reset, defaultValues, step, country]);
 
   const handleSubmit = () => {
     if (isValid) {
@@ -62,6 +64,8 @@ export const DynamicFormStep = () => {
     updateData(updatedValues);
     prevStep();
   };
+
+  if (!fieldDefs) return null;
 
   return (
     <div>
