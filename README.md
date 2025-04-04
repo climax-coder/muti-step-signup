@@ -31,6 +31,7 @@ A dynamic, multi-step sign-up form built with React, Zustand for state managemen
 
 ## 🗂️ Project Structure
 
+```
 src/
 ├── assets/ # Static assets (images, fonts, etc.)
 ├── components/
@@ -58,6 +59,7 @@ src/
 ├── index.css
 ├── main.tsx
 └── vite-env.d.ts
+```
 
 ## 📦 Installation
 
