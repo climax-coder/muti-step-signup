@@ -37,7 +37,7 @@ export const DynamicFormStep = () => {
     reset(defaultValues);
   }, [reset, defaultValues, step, country]);
 
-  const handleSubmit = () => {
+  const handleNext = () => {
     if (isValid) {
       const values = getValues();
       updateData(values);
@@ -83,7 +83,7 @@ export const DynamicFormStep = () => {
         <ArrowButton direction="left" onClick={handleBack}>
           Back
         </ArrowButton>
-        <ArrowButton direction="right" type="submit" onClick={handleSubmit}>
+        <ArrowButton direction="right" type="submit" onClick={handleNext}>
           Next
         </ArrowButton>
       </div>
