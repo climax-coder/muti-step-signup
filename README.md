@@ -65,7 +65,7 @@ src/
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-username/multi-country-signup.git
+git clone https://github.com/climax-coder/multi-country-signup.git
 cd multi-country-signup
 
 # 2. Install dependencies
